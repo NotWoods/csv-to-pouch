@@ -1,0 +1,33 @@
+{
+  "name": "csv-to-pouch",
+  "version": "2.0.3",
+  "main": "index.js",
+  "module": "index.es.js",
+  "bin": {
+    "csv-to-pouch": "./cmd.js"
+  },
+  "dependencies": {
+    "csv-parse": "^1.2.0",
+    "minimist": "^1.2.0",
+    "stream-batch": "^1.0.0"
+  },
+  "devDependencies": {
+    "promise-stream-utils": "^1.0.7",
+    "rollup": "^0.41.5",
+    "rollup-plugin-commonjs": "^8.0.2",
+    "rollup-plugin-node-resolve": "^2.0.0",
+    "stream-transform": "^0.1.2"
+  },
+  "scripts": {
+    "prepare": "rollup -c",
+    "prepublish": "npm run prepare"
+  },
+  "files": [
+    "index.js",
+    "index.js.map",
+    "index.es.js",
+    "index.es.js.map",
+    "index.d.ts",
+    "cmd.js"
+  ]
+}

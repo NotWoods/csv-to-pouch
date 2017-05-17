@@ -1,0 +1,4 @@
+node_modules
+*.map
+index.js
+index.es.js
