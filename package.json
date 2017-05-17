@@ -1,8 +1,11 @@
 {
   "name": "csv-to-pouch",
   "version": "2.0.3",
+  "description": "Parse CSV files and save their data to a PouchDB database.",
   "main": "index.js",
   "module": "index.es.js",
+  "license": "MIT",
+  "repository": "NotWoods/csv-to-pouch",
   "bin": {
     "csv-to-pouch": "./cmd.js"
   },
