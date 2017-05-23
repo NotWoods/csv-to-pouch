@@ -9,6 +9,10 @@ function parseCSVFile<T>(
 	transformer?: (row: any) => T,
 ): Promise<void>
 ```
+Parse CSV data from the input stream and save it to the PouchDB database.
+Each row is saved as a seperate PouchDB document. If the `_id` prexists in
+the database, the existing document will be updated with the new version
+and the revision version will change.
 
 - **db**: Database to save results to.
 - **input**: Stream representing the CSV file,
