@@ -2,7 +2,6 @@ import parse from 'csv-parse';
 import transform from 'stream-transform';
 import batch from 'stream-batch';
 import createPouchStream from './createPouchStream';
-import { finished } from 'promise-stream-utils';
 
 /**
  * Parse CSV data from the input stream and save it to the PouchDB database.
@@ -17,22 +16,37 @@ import { finished } from 'promise-stream-utils';
  * a PouchDB document.
  * @returns {Promise<void>} resolves when db has been written to
  */
-async function parseCSVFile(db, input, transformer = doc => doc) {
-	const parsingStream = input
-		.pipe(parse({
+function parseCSVFile(db, input, transformer = doc => doc) {
+	return new Promise((resolve, reject) => {
+		const csvParser = parse({
 			columns: true,
-			ltrim: true,
-			rtrim: true,
+			ltrim: true, rtrim: true,
 			skip_empty_lines: true,
-		}))
-		.pipe(transform(transformer))
-		.pipe(batch({
-			maxWait: 100,
-			maxItems: 50,
-		}))
-		.pipe(createPouchStream(db));
+		});
+		const _transformer = transform(transformer);
+		const batcher = batch({ maxWait: 100, maxItems: 50 });
+		const dbStream = createPouchStream(db);
 
-	await finished(parsingStream);
+		function rejectAndClear(err) {
+			reject(err);
+			csvParser.removeListener('error', rejectAndClear);
+			_transformer.removeListener('error', rejectAndClear);
+			batcher.removeListener('error', rejectAndClear);
+			dbStream.removeListener('error', rejectAndClear);
+		}
+
+		csvParser.on('error', rejectAndClear);
+		_transformer.on('error', rejectAndClear);
+		batcher.on('error', rejectAndClear);
+		dbStream.on('error', rejectAndClear);
+
+		const parsingStream = input
+			.pipe(csvParser)
+			.pipe(_transformer)
+			.pipe(batcher)
+			.pipe(dbStream)
+			.once('finish', resolve);
+	});
 }
 
 export default parseCSVFile;

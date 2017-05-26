@@ -1,6 +1,6 @@
 {
   "name": "csv-to-pouch",
-  "version": "3.0.0",
+  "version": "3.1.2",
   "description": "Parse CSV files and save their data to a PouchDB database.",
   "main": "index.js",
   "module": "index.es.js",
