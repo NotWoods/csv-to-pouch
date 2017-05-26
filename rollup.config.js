@@ -15,5 +15,6 @@ export default {
 	plugins: [
 		nodeResolve({ module: true }),
 		commonjs({ exclude: ['node_modules/promise-stream-utils/**'] }),
-	]
+	],
+	exports: 'named',
 };

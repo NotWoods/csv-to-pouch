@@ -17,7 +17,7 @@ import { finished } from 'promise-stream-utils';
  * a PouchDB document.
  * @returns {Promise<void>} resolves when db has been written to
  */
-export default async function parseCSVFile(db, input, transformer = doc => doc) {
+async function parseCSVFile(db, input, transformer = doc => doc) {
 	const parsingStream = input
 		.pipe(parse({
 			columns: true,
@@ -34,3 +34,6 @@ export default async function parseCSVFile(db, input, transformer = doc => doc) 
 
 	await finished(parsingStream);
 }
+
+export default parseCSVFile;
+export { parseCSVFile };
