@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "promise-stream-utils": "^1.0.7",
-    "rollup": "^0.41.5",
+    "rollup": "^0.67.4",
     "rollup-plugin-commonjs": "^8.0.2",
     "rollup-plugin-node-resolve": "^2.0.0",
     "stream-transform": "^0.1.2"
