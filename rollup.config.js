@@ -1,20 +1,24 @@
-import commonjs from 'rollup-plugin-commonjs';
-import nodeResolve from 'rollup-plugin-node-resolve';
+import nodeResolve from "rollup-plugin-node-resolve";
 
-export default {
-	entry: 'src/parseCSVFile.js',
-	sourceMap: true,
-	targets: [
-		{ dest: 'index.js', format: 'cjs' },
-		{ dest: 'index.es.js', format: 'es' },
-	],
-	external: [
-		...Object.keys(require('./package.json').dependencies),
-		'stream', 'buffer', 'fs', 'events', 'util', 'string_decoder',
-	],
-	plugins: [
-		nodeResolve({ module: true }),
-		commonjs({ exclude: ['node_modules/promise-stream-utils/**'] }),
-	],
-	exports: 'named',
+const { dependencies } = require("./package.json");
+
+/** @type {import("rollup").RollupWatchOptions} */
+const config = {
+    input: "src/parseCSVFile.js",
+    output: [
+        { file: "index.js", format: "cjs", sourcemap: true, exports: "named" },
+        { file: "index.es.js", format: "es", sourcemap: true }
+    ],
+    external: [
+        ...Object.keys(dependencies),
+        "stream",
+        "buffer",
+        "fs",
+        "events",
+        "util",
+        "string_decoder"
+    ],
+    plugins: [nodeResolve({ module: true })]
 };
+
+export default config;

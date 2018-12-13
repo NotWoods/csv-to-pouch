@@ -1,36 +1,44 @@
 {
-  "name": "csv-to-pouch",
-  "version": "3.1.2",
-  "description": "Parse CSV files and save their data to a PouchDB database.",
-  "main": "index.js",
-  "module": "index.es.js",
-  "license": "MIT",
-  "repository": "NotWoods/csv-to-pouch",
-  "bin": {
-    "csv-to-pouch": "./cmd.js"
-  },
-  "dependencies": {
-    "csv-parse": "^1.2.0",
-    "minimist": "^1.2.0",
-    "stream-batch": "^1.0.0"
-  },
-  "devDependencies": {
-    "promise-stream-utils": "^1.0.7",
-    "rollup": "^0.41.5",
-    "rollup-plugin-commonjs": "^8.0.2",
-    "rollup-plugin-node-resolve": "^2.0.0",
-    "stream-transform": "^0.1.2"
-  },
-  "scripts": {
-    "prepare": "rollup -c",
-    "prepublish": "npm run prepare"
-  },
-  "files": [
-    "index.js",
-    "index.js.map",
-    "index.es.js",
-    "index.es.js.map",
-    "index.d.ts",
-    "cmd.js"
-  ]
+    "name": "csv-to-pouch",
+    "version": "3.2.0",
+    "description": "Parse CSV files and save their data to a PouchDB database.",
+    "license": "MIT",
+    "author": "Tiger Oakes <contact@tigeroakes.com> (https://tigeroakes.com)",
+    "repository": "NotWoods/csv-to-pouch",
+    "bugs": "https://github.com/NotWoods/csv-to-pouch/issues",
+    "homepage": "https://github.com/NotWoods/csv-to-pouch#readme",
+    "main": "index.js",
+    "module": "index.es.js",
+    "types": "index.d.ts",
+    "bin": {
+        "csv-to-pouch": "./cmd.js"
+    },
+    "scripts": {
+        "build": "rollup -c",
+        "lint": "prettier --parser babylon \"src/**/*.js\" \"cmd.js\" --write",
+        "lint:check": "tsc --noEmit && prettier --parser babylon \"src/**/*.js\" \"cmd.js\" --list-different"
+    },
+    "dependencies": {
+        "csv-parse": "^1.2.0",
+        "minimist": "^1.2.0",
+        "stream-batch": "^1.0.0",
+        "stream-transform": "^1.0.8"
+    },
+    "devDependencies": {
+        "@types/pouchdb": "^6.3.2",
+        "husky": "^1.2.0",
+        "prettier": "^1.15.3",
+        "promise-stream-utils": "^1.1.0",
+        "rollup": "^0.67.4",
+        "rollup-plugin-node-resolve": "^4.0.0",
+        "typescript": "^3.2.2"
+    },
+    "files": [
+        "index.js",
+        "index.js.map",
+        "index.es.js",
+        "index.es.js.map",
+        "index.d.ts",
+        "cmd.js"
+    ]
 }
