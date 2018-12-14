@@ -19,7 +19,7 @@
         "lint:check": "tsc --noEmit && prettier --parser babylon \"src/**/*.js\" \"cmd.js\" --list-different"
     },
     "dependencies": {
-        "csv-parse": "^1.2.0",
+        "csv-parse": "^4.2.0",
         "minimist": "^1.2.0",
         "stream-batch": "^1.0.0",
         "stream-transform": "^1.0.8"
