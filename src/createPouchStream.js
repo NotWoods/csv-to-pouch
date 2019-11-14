@@ -1,3 +1,4 @@
+// @ts-check
 import { PromiseWritable } from "promise-stream-utils";
 
 /**

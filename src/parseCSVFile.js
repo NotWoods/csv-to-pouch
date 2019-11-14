@@ -1,4 +1,4 @@
-//@ts-check
+// @ts-check
 import parse from "csv-parse";
 import transform from "stream-transform";
 import batch from "stream-batch";
@@ -24,7 +24,8 @@ function parseCSVFile(db, input, transformer = doc => doc) {
         columns: true,
         ltrim: true,
         rtrim: true,
-        skip_empty_lines: true
+        skip_empty_lines: true,
+        relax_column_count: true
     });
     const _transformer = transform(transformer);
     const batcher = batch({ maxWait: 100, maxItems: 50 });

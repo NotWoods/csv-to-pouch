@@ -1,6 +1,6 @@
 {
     "name": "csv-to-pouch",
-    "version": "3.2.0",
+    "version": "3.3.0",
     "description": "Parse CSV files and save their data to a PouchDB database.",
     "license": "MIT",
     "author": "Tiger Oakes <contact@tigeroakes.com> (https://tigeroakes.com)",
@@ -15,7 +15,7 @@
     },
     "scripts": {
         "build": "rollup -c",
-        "lint": "prettier --parser babylon \"src/**/*.js\" \"cmd.js\" --write",
+        "lint": "prettier --parser babel \"src/**/*.js\" \"cmd.js\" --write",
         "lint:check": "tsc --noEmit && prettier --parser babylon \"src/**/*.js\" \"cmd.js\" --list-different"
     },
     "dependencies": {
@@ -27,11 +27,11 @@
     "devDependencies": {
         "@types/pouchdb": "^6.3.2",
         "husky": "^1.2.0",
-        "prettier": "^1.15.3",
+        "prettier": "^1.19.1",
         "promise-stream-utils": "^1.1.0",
         "rollup": "^0.67.4",
         "rollup-plugin-node-resolve": "^4.0.0",
-        "typescript": "^3.2.2"
+        "typescript": "^3.7.2"
     },
     "files": [
         "index.js",
