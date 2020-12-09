@@ -20,18 +20,18 @@
     },
     "dependencies": {
         "csv-parse": "^1.2.0",
-        "minimist": "^1.2.0",
+        "minimist": "^1.2.5",
         "stream-batch": "^1.0.0",
         "stream-transform": "^1.0.8"
     },
     "devDependencies": {
-        "@types/pouchdb": "^6.3.2",
+        "@rollup/plugin-node-resolve": "^11.0.0",
+        "@types/pouchdb": "^6.4.0",
         "husky": "^1.2.0",
-        "prettier": "^1.19.1",
+        "prettier": "^2.2.1",
         "promise-stream-utils": "^1.1.0",
-        "rollup": "^0.67.4",
-        "rollup-plugin-node-resolve": "^4.0.0",
-        "typescript": "^3.7.2"
+        "rollup": "^2.34.2",
+        "typescript": "^4.1.2"
     },
     "files": [
         "index.js",

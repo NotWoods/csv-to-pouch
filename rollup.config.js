@@ -1,4 +1,6 @@
-import nodeResolve from "rollup-plugin-node-resolve";
+// @ts-check
+import { builtinModules } from "module";
+import nodeResolve from "@rollup/plugin-node-resolve";
 
 const { dependencies } = require("./package.json");
 
@@ -7,18 +9,10 @@ const config = {
     input: "src/parseCSVFile.js",
     output: [
         { file: "index.js", format: "cjs", sourcemap: true, exports: "named" },
-        { file: "index.es.js", format: "es", sourcemap: true }
+        { file: "index.es.js", format: "es", sourcemap: true },
     ],
-    external: [
-        ...Object.keys(dependencies),
-        "stream",
-        "buffer",
-        "fs",
-        "events",
-        "util",
-        "string_decoder"
-    ],
-    plugins: [nodeResolve({ module: true })]
+    external: [...Object.keys(dependencies), ...builtinModules],
+    plugins: [nodeResolve()],
 };
 
 export default config;

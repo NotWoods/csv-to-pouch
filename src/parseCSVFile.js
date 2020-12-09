@@ -19,13 +19,13 @@ import createPouchStream from "./createPouchStream";
  * a PouchDB document.
  * @returns {Promise<void>} resolves when db has been written to
  */
-function parseCSVFile(db, input, transformer = doc => doc) {
+function parseCSVFile(db, input, transformer = (doc) => doc) {
     const csvParser = parse({
         columns: true,
         ltrim: true,
         rtrim: true,
         skip_empty_lines: true,
-        relax_column_count: true
+        relax_column_count: true,
     });
     const _transformer = transform(transformer);
     const batcher = batch({ maxWait: 100, maxItems: 50 });

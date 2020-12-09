@@ -21,10 +21,10 @@ if (require.main === module) {
             i: "input",
             h: "help",
             u: "username",
-            p: "password"
+            p: "password",
         },
         string: ["input", "username", "password", "db"],
-        boolean: ["help"]
+        boolean: ["help"],
     });
 
     if (args.help) {
@@ -84,7 +84,7 @@ if (require.main === module) {
 
     parseCSVFile(db, inputStream)
         .then(() => process.exit(0))
-        .catch(err => {
+        .catch((err) => {
             console.error("unexpected error");
             console.error(err);
             process.exit(1);

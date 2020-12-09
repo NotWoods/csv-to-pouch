@@ -31,7 +31,7 @@ export default function createPouchStream(db, pouchOpts) {
             if (Array.isArray(data)) {
                 // Find all objects in the array without a `_rev` field
                 const noRevs = data
-                    .filter(doc => !doc._rev)
+                    .filter((doc) => !doc._rev)
                     .reduce((map, doc) => map.set(doc._id, doc), new Map());
 
                 if (noRevs.size > 0) {
@@ -39,11 +39,11 @@ export default function createPouchStream(db, pouchOpts) {
                     // check if they already exist in the database.
                     // If so, add the existing rev property to the doc.
                     const existing = await db.allDocs({
-                        keys: [...noRevs.keys()]
+                        keys: [...noRevs.keys()],
                     });
                     existing.rows
-                        .filter(row => !isErrorRow(row))
-                        .forEach(row => {
+                        .filter((row) => !isErrorRow(row))
+                        .forEach((row) => {
                             noRevs.get(row.id)._rev = row.value.rev;
                         });
                 }
@@ -64,6 +64,6 @@ export default function createPouchStream(db, pouchOpts) {
                 }
                 await db.put(data, pouchOpts);
             }
-        }
+        },
     });
 }
