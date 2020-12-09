@@ -22,8 +22,7 @@ import createPouchStream from "./createPouchStream";
 function parseCSVFile(db, input, transformer = (doc) => doc) {
     const csvParser = parse({
         columns: true,
-        ltrim: true,
-        rtrim: true,
+        trim: true,
         skip_empty_lines: true,
         relax_column_count: true,
     });
