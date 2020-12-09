@@ -15,8 +15,8 @@
     },
     "scripts": {
         "build": "rollup -c",
-        "lint": "prettier --parser babel \"src/**/*.js\" \"cmd.js\" --write",
-        "lint:check": "tsc --noEmit && prettier --parser babylon \"src/**/*.js\" \"cmd.js\" --list-different"
+        "lint": "prettier \"src/**/*.js\" \"cmd.js\" --write",
+        "lint:check": "tsc --noEmit && prettier \"src/**/*.js\" \"cmd.js\" --list-different"
     },
     "dependencies": {
         "csv-parse": "^4.14.1",
