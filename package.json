@@ -22,7 +22,7 @@
         "csv-parse": "^1.2.0",
         "minimist": "^1.2.5",
         "stream-batch": "^1.0.0",
-        "stream-transform": "^1.0.8"
+        "stream-transform": "^2.0.3"
     },
     "devDependencies": {
         "@rollup/plugin-node-resolve": "^11.0.0",
