@@ -58,8 +58,9 @@ export default function createPouchStream(db, pouchOpts) {
                         // Save the rev from the database onto the object if the doc exists
                         data._rev = doc._rev;
                     } catch (err) {
+                        const error = /** @type {{ status?:unknown }} */ (err);
                         // If the doc doesn't already exist, just keep going
-                        if (err.status !== 404) throw err;
+                        if (error.status !== 404) throw error;
                     }
                 }
                 await db.put(data, pouchOpts);

@@ -1,6 +1,6 @@
 // @ts-check
-import parse from "csv-parse";
-import transform from "stream-transform";
+import { parse } from "csv-parse";
+import { transform } from "stream-transform";
 import batch from "stream-batch";
 import { finished } from "promise-stream-utils";
 import createPouchStream from "./createPouchStream";
